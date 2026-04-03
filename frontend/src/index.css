@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    background-color: #f7f9fb;
+    color: #191c1e;
+    min-height: 100vh;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Primary gradient button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-md text-white font-inter font-medium text-sm transition-all duration-200;
+    background: linear-gradient(135deg, #00288e, #1e40af);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
+  }
+  .btn-primary:hover {
+    @apply opacity-90;
+  }
+
+  /* Tertiary text button */
+  .btn-tertiary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-md text-primary font-inter font-medium text-sm transition-all duration-200 bg-transparent;
+  }
+  .btn-tertiary:hover {
+    @apply bg-surface_container_high;
+  }
+
+  /* Input field - bottom border only */
+  .input-field {
+    @apply w-full bg-surface_container_lowest px-3 py-2.5 text-on_surface font-inter text-sm outline-none transition-all duration-200;
+    border: none;
+    border-bottom: 1px solid rgba(196, 197, 213, 0.4);
+    min-height: 44px;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+  }
+  .input-field:focus {
+    border-bottom: 2px solid #00288e;
+  }
+  .input-field::placeholder {
+    color: #757684;
+  }
+  /* Restore date/select picker arrow on iOS */
+  input[type="date"].input-field,
+  select.input-field {
+    -webkit-appearance: auto;
+    appearance: auto;
+    border-radius: 0;
+    background-color: #ffffff;
+  }
+  input[type="date"].input-field::-webkit-date-and-time-value {
+    text-align: left;
+  }
+
+  /* Status badges */
+  .badge-approved {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-inter font-medium;
+    background-color: #d0e1fb;
+    color: #54647a;
+  }
+  .badge-pending {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-inter font-medium;
+    background-color: #ffdbce;
+    color: #802a00;
+  }
+  .badge-rejected {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-inter font-medium;
+    background-color: #ffdad6;
+    color: #93000a;
+  }
+  .badge-present {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-inter font-medium;
+    background-color: #d0e1fb;
+    color: #54647a;
+  }
+  .badge-absent {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-inter font-medium;
+    background-color: #ffdad6;
+    color: #93000a;
+  }
+
+  /* Sidebar nav item */
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-md cursor-pointer text-on_surface_variant font-inter text-sm font-medium transition-all duration-150 relative;
+  }
+  .nav-item:hover {
+    @apply bg-surface_container_high text-on_surface;
+  }
+  .nav-item.active {
+    @apply bg-surface_container_high text-primary;
+  }
+  .nav-item.active::before {
+    content: '';
+    @apply absolute left-0 top-1 bottom-1 w-[3px] rounded-r bg-primary;
+  }
+
+  /* Card surface */
+  .card {
+    @apply bg-surface_container_lowest rounded-md p-6;
+    box-shadow: 0 8px 40px 0 rgba(25,28,30,0.06);
+  }
+
+  /* Section label */
+  .section-label {
+    @apply text-xs font-inter font-semibold uppercase tracking-[0.05em] text-on_surface_variant;
+  }
+
+  /* Atelier table */
+  .atelier-table {
+    @apply w-full font-inter;
+  }
+  .atelier-table thead tr {
+    @apply bg-surface_container_low;
+  }
+  .atelier-table thead th {
+    @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.05em] text-on_surface_variant;
+  }
+  .atelier-table tbody tr {
+    @apply bg-surface_container_lowest;
+    margin-bottom: 2px;
+  }
+  .atelier-table tbody tr:nth-child(even) {
+    @apply bg-surface_container_low;
+  }
+  .atelier-table tbody td {
+    @apply px-4 py-3 text-sm text-on_surface;
+  }
+}
