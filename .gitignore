@@ -1,9 +1,9 @@
 # Dependencies
-frontend/node_modules/
+node_modules/
 
 # Build output
-frontend/dist/
-frontend/.vite/
+dist/
+.vite/
 
 # Local env files
 .env
@@ -18,3 +18,4 @@ frontend/.vite/
 # Logs
 *.log
 npm-debug.log*
+.claude/
