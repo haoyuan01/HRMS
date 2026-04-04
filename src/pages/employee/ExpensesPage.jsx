@@ -86,7 +86,7 @@ export default function ExpensesPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="section-label block mb-2">Amount (USD)</label>
+                  <label className="section-label block mb-2">Amount (RM)</label>
                   <input
                     type="number" step="0.01" min="0"
                     className="input-field" placeholder="0.00"

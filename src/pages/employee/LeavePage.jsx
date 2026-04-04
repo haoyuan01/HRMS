@@ -11,6 +11,7 @@ export default function LeavePage() {
   const [showForm, setShowForm] = useState(false)
   const [form, setForm]         = useState({ type: leaveTypes[0], startDate: '', endDate: '', reason: '' })
   const [errors, setErrors]     = useState({})
+  const today = new Date().toISOString().split('T')[0]
 
   const calcDays = (start, end) => {
     if (!start || !end) return 0
@@ -21,6 +22,7 @@ export default function LeavePage() {
   const validate = () => {
     const e = {}
     if (!form.startDate) e.startDate = 'Required'
+    if (form.startDate && form.startDate < today) e.startDate = 'Cannot be a past date'
     if (!form.endDate)   e.endDate   = 'Required'
     if (form.endDate && form.startDate && form.endDate < form.startDate) e.endDate = 'Must be after start date'
     if (!form.reason.trim()) e.reason = 'Required'
@@ -118,6 +120,7 @@ export default function LeavePage() {
                   <input
                     type="date"
                     className="input-field"
+                    min={today}
                     value={form.startDate}
                     onChange={e => {
                       const val = e.target.value
@@ -137,7 +140,7 @@ export default function LeavePage() {
                     type="date"
                     className="input-field"
                     value={form.endDate}
-                    min={form.startDate || undefined}
+                    min={form.startDate || today}
                     onChange={e => setForm(f => ({ ...f, endDate: e.target.value }))}
                   />
                   {errors.endDate && <p className="text-error text-xs mt-1 font-inter">{errors.endDate}</p>}
